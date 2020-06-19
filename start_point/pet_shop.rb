@@ -31,3 +31,15 @@ def pets_by_breed(pet_shop, breed)
     end
     return total
 end
+
+def find_pet_by_name(pet_shop, pet_name)
+
+end
+
+
+
+
+def add_pet_to_stock(pet_shop, new_pet)
+    pet_shop[:pets].push(new_pet)
+    return stock_count(pet_shop)
+end
