@@ -38,7 +38,6 @@ end
 
 
 
-
 def add_pet_to_stock(pet_shop, new_pet)
     pet_shop[:pets].push(new_pet)
     return stock_count(pet_shop)
@@ -48,8 +47,9 @@ def customer_cash(customer)
     return customer[:cash]
 end
 
-
-
+def remove_customer_cash(customer, cash)
+    return customer[:cash] -= cash
+end
 
 def customer_pet_count(customer)
     return customer[:pets].length
