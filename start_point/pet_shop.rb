@@ -66,14 +66,24 @@ def customer_pet_count(customer)
     return customer[:pets].length
 end
 
-def add_pet_to_customer(customer, new_pet)
-    customer[:pets].push(new_pet)
+def add_pet_to_customer(customer, pet)
+    customer[:pets].push(pet)
     return customer_pet_count(customer)
 end
 
-def customer_can_afford_pet(customer, new_pet)
-        if (customer[:cash] >= new_pet[:price])
+def customer_can_afford_pet(customer, pet)
+        if (customer[:cash] >= pet[:price])
             return true
         end
     return false
+end
+
+def sell_pet_to_customer(pet_shop, pet, customer)
+    if (pet != nil && customer_can_afford_pet(customer, pet) == true)
+            add_pet_to_customer(customer, pet)
+            customer_pet_count(customer)
+            pet_shop[:admin][:pets_sold] += customer[:pets].length
+            customer[:cash] -= pet[:price]
+            pet_shop[:admin][:total_cash] += pet[:price]
+    end
 end
